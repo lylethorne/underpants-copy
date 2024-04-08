@@ -43,7 +43,19 @@ _.identity = function(value){
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
-
+_.typeOf = function(value){
+    if(Array.isArray(value)){
+        return 'array';
+    }else if(value === null){
+        return 'null';
+    }else if(value instanceof Date){
+        return 'Date';
+    }else if(typeof value === 'object'){
+        return 'object';
+    }else{
+        return (typeof value);
+    }
+}
 
 /** _.first
 * Arguments:
@@ -62,7 +74,21 @@ _.identity = function(value){
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
-
+_.first = function(array, number){
+    if(!Array.isArray(array)){
+        return [];
+    }else if(Math.sign(number) === -1){
+        return [];
+    }else if(number === NaN || !number){
+        return array[0];
+    }else if(number > array.length){
+        return array;
+    }else{
+        for(let i = 0; i < array.length; i ++){
+            return array[i];
+        }
+    }
+}
 
 /** _.last
 * Arguments:
@@ -81,6 +107,19 @@ _.identity = function(value){
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
+_.last = function(array, number){
+    for(let i = 0; i < array.length; i++){
+    if(!Array.isArray){
+        return [];
+    }else if(!number || number === NaN){
+        return array[i];
+    }else if(Math.sign(number) === -1){
+        return [];
+      
+        }
+    
+}
+}
 
 
 /** _.indexOf
@@ -98,7 +137,15 @@ _.identity = function(value){
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-
+_.indexOf = function(array, value){
+    for(let i = 0; i < array.length; i++){
+        if(array[i] === value){
+            return i;
+        } else if(array[i] !== value){
+            return -1;
+        }
+    }
+}
 
 /** _.contains
 * Arguments:
@@ -131,7 +178,19 @@ _.identity = function(value){
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
+_.each = function(collection, func){
+    //determine if collection is an array
+    if(Array.isArray(collection)){
+        for(let i = 0; i < collection.length; i++){
+            func(collection[i], i, collection);
+        }
+    }else { //else it is an object
+        for(let key in collection){
+            func(collection[key], key, collection);
+        }
+    }
 
+}
 
 /** _.unique
 * Arguments:
