@@ -84,9 +84,10 @@ _.first = function(array, number){
     }else if(number > array.length){
         return array;
     }else{
-        for(let i = 0; i < array.length; i ++){
-            return array[i];
-        }
+        let newArray = [];
+        for(let i = 0; i < number; i ++){
+            newArray.push(array[i]);
+        } return newArray;
     }
 }
 
@@ -108,18 +109,22 @@ _.first = function(array, number){
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 _.last = function(array, number){
-    for(let i = 0; i < array.length; i++){
-    if(!Array.isArray){
+  
+    if(!Array.isArray(array)){
         return [];
     }else if(!number || number === NaN){
-        return array[i];
+        return array[array.length - 1];
     }else if(Math.sign(number) === -1){
         return [];
-      
-        }
+    }else if(number > array.length){
+        return array;
+    }else{
+            return array.slice(-number);
+         } 
+    
     
 }
-}
+
 
 
 /** _.indexOf
@@ -141,10 +146,9 @@ _.indexOf = function(array, value){
     for(let i = 0; i < array.length; i++){
         if(array[i] === value){
             return i;
-        } else if(array[i] !== value){
-            return -1;
         }
-    }
+    } 
+       return -1;
 }
 
 /** _.contains
@@ -161,6 +165,11 @@ _.indexOf = function(array, value){
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
+_.contians = function(array, value){
+    for(let i = 0; i < array.length; i++){
+        array[i] === value ? true:false;
+    }
+}
 
 
 /** _.each
