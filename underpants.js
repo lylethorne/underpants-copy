@@ -165,10 +165,11 @@ _.indexOf = function(array, value){
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
-_.contians = function(array, value){
+_.contains = function(array, value){
     for(let i = 0; i < array.length; i++){
-        return array[i] !== value ? true:false;
+        return array[i] === value ? true : false;
     }
+
 }
 
 
@@ -210,7 +211,16 @@ _.each = function(collection, func){
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
-
+_.unique = function(array){
+    let newArray = [];
+    array.forEach(element => {
+        if(!newArray.includes(element)){
+            newArray.push(element);
+        }
+        
+    });
+    return newArray;
+}
 
 /** _.filter
 * Arguments:
@@ -332,7 +342,7 @@ _.every = function(collection, func){
 
         }
     }else{// its an object
-        if(){
+        if(func === undefined){
 
         }else{
 
