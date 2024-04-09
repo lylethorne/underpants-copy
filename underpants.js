@@ -166,11 +166,13 @@ _.indexOf = function(array, value){
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 _.contains = function(array, value){
+let exists = false;
     for(let i = 0; i < array.length; i++){
-        return array[i] === value ? true : false;
+        array[i] === value ? exists = true : exists;
     }
-
+    return exists;
 }
+
 
 
 /** _.each
@@ -237,7 +239,9 @@ _.unique = function(array){
 * Extra Credit:
 *   use _.each in your implementation
 */
+_.filter = function(array, func){
 
+}
 
 /** _.reject
 * Arguments:
