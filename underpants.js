@@ -167,7 +167,7 @@ _.indexOf = function(array, value){
 */
 _.contians = function(array, value){
     for(let i = 0; i < array.length; i++){
-        array[i] === value ? true:false;
+        return array[i] !== value ? true:false;
     }
 }
 
@@ -312,7 +312,34 @@ _.each = function(collection, func){
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
+_.every = function(collection, func){
+    if(Array.isArray(collection)){
+        //determine if function  no was given
+        if(func === undefined){
+            for(let i = 0; i < collection.length; i++){
+                //determine if element in array is falsey
+                if(!collection[i]){
+                    return false;
+                }
+            }
+        }else{
+            for(let i = 0; i < collection.length; i++){
+                //determine if invoking callback func is falsey
+                if(!func(collection[i], i, collection)){
+                        return false;
+                }
+            }
 
+        }
+    }else{// its an object
+        if(){
+
+        }else{
+
+        }
+}
+return true;
+}
 
 /** _.some
 * Arguments:
