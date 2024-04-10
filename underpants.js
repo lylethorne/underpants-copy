@@ -240,6 +240,12 @@ _.unique = function(array){
 *   use _.each in your implementation
 */
 _.filter = function(array, func){
+    let newArray = [];
+    for(let i = 0; i < array.length; i++){
+        func(array[i], i, array)
+            return newArray.push(i);
+        
+    }
 
 }
 
