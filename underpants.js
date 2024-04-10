@@ -241,12 +241,12 @@ _.unique = function(array){
 */
 _.filter = function(array, func){
     let newArray = [];
-    for(let i = 0; i < array.length; i++){
-        func(array[i], i, array)
-            return newArray.push(i);
-        
-    }
+ if(_.each(array, func) === true){
+    newArray.push(array);
+ }else{
 
+ }
+ return newArray;
 }
 
 /** _.reject
@@ -261,6 +261,13 @@ _.filter = function(array, func){
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
+_.reject = function(array, func){
+    let newArray = [];
+    if(_.each(array, func) === false){
+        newArray.push(array[i]);
+    }
+    return newArray;
+}
 
 
 /** _.partition
@@ -298,7 +305,11 @@ _.filter = function(array, func){
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-
+_.map = function(collection, func){
+    let newArray = [];
+   let test =  _.each(collection, func);
+    return newArray.push(test);
+}
 
 /** _.pluck
 * Arguments:
