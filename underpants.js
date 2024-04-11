@@ -436,7 +436,9 @@ return true;
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
-
+_.reduce = (array, func, seed) => {
+    
+}
 
 /** _.extend
 * Arguments:
@@ -452,7 +454,10 @@ return true;
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
-
+_.extend = (target, ...objects) => {
+    let copy = Object.assign(target, ...objects);
+    return copy;
+}
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
