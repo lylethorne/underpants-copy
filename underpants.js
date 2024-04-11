@@ -241,11 +241,14 @@ _.unique = function(array){
 */
 _.filter = function(array, func){
     let newArray = [];
- if(_.each(array, func) === true){
-    newArray.push(array);
- }else{
+    for(let i = 0; i < array.length; i ++){
+      let test = func(array[i], i, array);
+        if(test === true) {
 
- }
+            newArray.push(array[i]);
+        }      
+        }
+    
  return newArray;
 }
 
@@ -263,9 +266,13 @@ _.filter = function(array, func){
 */
 _.reject = function(array, func){
     let newArray = [];
-    if(_.each(array, func) === false){
-        newArray.push(array[i]);
-    }
+    for(let i = 0; i < array.length; i ++){
+        let test = func(array[i], i, array);
+          if(test === false) {
+  
+              newArray.push(array[i]);
+          }      
+          }
     return newArray;
 }
 
