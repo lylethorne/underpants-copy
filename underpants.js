@@ -295,6 +295,20 @@ _.reject = function(array, func){
 *   }); -> [[2,4],[1,3,5]]
 }
 */
+_.partition = function(array, func){
+    let containerArray = [];
+    let truthyArray = [];
+    let falseyArray = [];
+    for(let i = 0; i < array.length; i++){
+        let test = func(i, array);
+        if(!test){
+            falseyArray.push(array[i]);
+        }else{
+            truthyArray.push(array[i]);
+        }
+    }
+    return containerArray = [...truthyArray, ...falseyArray];
+}
 
 
 /** _.map
@@ -315,7 +329,8 @@ _.reject = function(array, func){
 _.map = function(collection, func){
     let newArray = [];
    let test =  _.each(collection, func);
-    return newArray.push(test);
+    newArray.push(test);
+    return newArray;
 }
 
 /** _.pluck
@@ -328,7 +343,9 @@ _.map = function(collection, func){
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
+_.pluck = function(array, property){
 
+}
 
 /** _.every
 * Arguments:
