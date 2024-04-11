@@ -241,16 +241,18 @@ _.unique = function(array){
 */
 _.filter = function(array, func){
     let newArray = [];
-    for(let i = 0; i < array.length; i ++){
-      let test = func(array[i], i, array);
-        if(test === true) {
+   _.each(array, func(item){ 
 
-            newArray.push(array[i]);
-        }      
-        }
     
+   });
+    // for(let i = 0; i < array.length; i ++){
+    //   let test = func(array[i], i, array);
+    //     if(test === true) 
+    //         newArray.push(array[i]);
+    //     }      
+    //     }
  return newArray;
-}
+};
 
 /** _.reject
 * Arguments:
@@ -301,7 +303,7 @@ _.partition = function(array, func){
     let falseyArray = [];
     for(let i = 0; i < array.length; i++){
         let test = func(i, array);
-        if(!test){
+        if(!array[i]){
             falseyArray.push(array[i]);
         }else{
             truthyArray.push(array[i]);
@@ -416,7 +418,9 @@ return true;
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
-
+_.some = (collection, func) => {
+    let test = _.each()
+}
 
 /** _.reduce
 * Arguments:
@@ -437,7 +441,7 @@ return true;
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 _.reduce = (array, func, seed) => {
-    
+
 }
 
 /** _.extend
