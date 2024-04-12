@@ -241,15 +241,13 @@ _.unique = function(array){
 */
 _.filter = function(array, func){
     let newArray = [];
-   _.each(array, func(item){ 
+   _.each(array, (item) => {  
+        let test = func(item);
+            if(test === true) 
+                newArray.push(item);
 
-    
    });
-    // for(let i = 0; i < array.length; i ++){
-    //   let test = func(array[i], i, array);
-    //     if(test === true) 
-    //         newArray.push(array[i]);
-    //     }      
+   
     //     }
  return newArray;
 };
