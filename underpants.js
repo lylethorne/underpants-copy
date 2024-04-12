@@ -343,13 +343,13 @@ _.partition = function(array, func){
 _.map = function(collection, func){
     let newArray = [];
     if(Array.isArray(collection) === true){
-        _.each(collection, (item) => {
-        let result = func(item, count, collection);
+        _.each(collection, (item, i, collection) => {
+        let result = func(item, i, collection);
         newArray.push(result);
         });
     }else{ //else its an object
         _.each(collection, (value, key, object) => {
-            let result = func(value, key, collection);
+            let result = func(value, key, object);
             //get test object values onto newArray
             newArray.push(result);
         });
@@ -369,7 +369,11 @@ _.map = function(collection, func){
 */
 _.pluck = function(array, property){
     let newArray = [];
-
+    _.map(array, (item, i, array) => {
+        if(array[i] === property){
+            newArray.push(item);
+        }
+    })
     return newArray;
 }
 
