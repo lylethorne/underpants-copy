@@ -241,12 +241,11 @@ _.unique = function(array){
 */
 _.filter = function(array, func){
     let newArray = [];
-    let count = 0;
-   _.each(array, (item) => {  
-        let test = func(item, count, array);
-        count++;
-        if(test === true) 
-        newArray.push(item);
+   _.each(array, (item, index, arr) => {  
+        if(func(item, index, arr)){
+
+            newArray.push(item);
+        }
    });
 // for(let i = 0; i < array.length; i++){
 //     let test = func(array[i], i, array);
@@ -343,9 +342,19 @@ _.partition = function(array, func){
 */
 _.map = function(collection, func){
     let newArray = [];
-   let test =  _.each(collection, func);
-    newArray.push(test);
-    return newArray;
+    if(Array.isArray(collection) === true){
+        _.each(collection, (item) => {
+        let result = func(item, count, collection);
+        newArray.push(result);
+        });
+    }else{ //else its an object
+        _.each(collection, (value, key, object) => {
+            let result = func(value, key, collection);
+            //get test object values onto newArray
+            newArray.push(result);
+        });
+    }
+    return newArray; 
 }
 
 /** _.pluck
@@ -359,7 +368,9 @@ _.map = function(collection, func){
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 _.pluck = function(array, property){
+    let newArray = [];
 
+    return newArray;
 }
 
 /** _.every
@@ -432,7 +443,7 @@ return true;
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 _.some = (collection, func) => {
-    let test = _.each()
+   
 }
 
 /** _.reduce
