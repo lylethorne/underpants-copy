@@ -304,15 +304,25 @@ _.partition = function(array, func){
     let containerArray = [];
     let truthyArray = [];
     let falseyArray = [];
-    for(let i = 0; i < array.length; i++){
-        let test = func(i, array);
-        if(!array[i]){
-            falseyArray.push(array[i]);
+    let count = 0;
+    _.each(array, (item) => {
+        let test = func(item, count, array);
+        count++;
+        if(!test){
+            falseyArray.push(item);
         }else{
-            truthyArray.push(array[i]);
+            truthyArray.push(item);
         }
-    }
-    return containerArray = [...truthyArray, ...falseyArray];
+    });
+    // for(let i = 0; i < array.length; i++){
+    //     let test = func(i, array);
+    //     if(!array[i]){
+    //         falseyArray.push(array[i]);
+    //     }else{
+    //         truthyArray.push(array[i]);
+    //     }
+    // }
+    return containerArray = [[...truthyArray], [...falseyArray]];
 }
 
 
