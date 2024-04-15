@@ -368,13 +368,10 @@ _.map = function(collection, func){
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 _.pluck = function(array, property){
-    let newArray = [];
-    _.map(array, (item, i, array) => {
-        if(array[i] === property){
-            newArray.push(item);
-        }
-    })
-    return newArray;
+   return  _.map(array, (item, i, array) => {
+       let output = array[i][property];
+       return output;
+    });
 }
 
 /** _.every
@@ -414,7 +411,6 @@ _.every = function(collection, func){
                         return false;
                 }
             }
-
         }
     }else{// its an object
         if(func === undefined){
@@ -447,7 +443,40 @@ return true;
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 _.some = (collection, func) => {
-   
+    if(Array.isArray(collection)){
+        //determine if no function was given 
+        if(func === undefined){
+            for(let i = 0; i < collection.length; i++){
+                if(collection[i]){
+                    return true;
+                }
+            }
+        }else{
+            for(let i = 0; i < collection.length; i++){
+                //determine if invoking callback func is falsey
+                if(func(collection[i], i, collection)){
+                    return true; 
+                }
+           
+            }
+        }
+    }else{// its an object
+        if(func === undefined){
+            for(let key in collection){
+                if(collection[key]){
+                    return true
+                }
+            }
+
+        }else{
+            for(let key in collection){
+                if(func(collection[key], key, collection)){
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
 }
 
 /** _.reduce
@@ -469,7 +498,22 @@ _.some = (collection, func) => {
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 _.reduce = (array, func, seed) => {
+    //what we are accumulating
+    let output; 
+    if(seed === undefined){
+        output = array[0];
+        for(let i = 1; i < array.length; i++){
+            //reassign output to the result of invoking func
+            output = func(output, array[i], i);
+        }
+    }else{
+        output = seed;
+        for(let i = 0; i < array.length; i++){
+            output = func(output, array[i], i);
+        }
 
+   }
+   return output;
 }
 
 /** _.extend
