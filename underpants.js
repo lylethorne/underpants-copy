@@ -121,8 +121,6 @@ _.last = function(array, number){
     }else{
             return array.slice(-number);
          } 
-    
-    
 }
 
 
